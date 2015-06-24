@@ -12,6 +12,7 @@
 		05036FBB1B3A080D00C88B7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05036FBA1B3A080D00C88B7E /* Images.xcassets */; };
 		05036FBE1B3A080D00C88B7E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05036FBC1B3A080D00C88B7E /* MainMenu.xib */; };
 		05036FCA1B3A080D00C88B7E /* ShowKeysTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05036FC91B3A080D00C88B7E /* ShowKeysTests.m */; };
+		05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		05036FC31B3A080D00C88B7E /* ShowKeysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowKeysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05036FC81B3A080D00C88B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05036FC91B3A080D00C88B7E /* ShowKeysTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowKeysTests.m; sourceTree = "<group>"; };
+		05036FD31B3B11F100C88B7E /* ShowKeysWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowKeysWindow.h; sourceTree = "<group>"; };
+		05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowKeysWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				05036FB61B3A080D00C88B7E /* AppDelegate.m */,
 				05036FBA1B3A080D00C88B7E /* Images.xcassets */,
 				05036FBC1B3A080D00C88B7E /* MainMenu.xib */,
+				05036FD31B3B11F100C88B7E /* ShowKeysWindow.h */,
+				05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */,
 				05036FB31B3A080D00C88B7E /* Supporting Files */,
 			);
 			path = ShowKeys;
@@ -210,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */,
 				05036FB91B3A080D00C88B7E /* main.m in Sources */,
 				05036FB71B3A080D00C88B7E /* AppDelegate.m in Sources */,
 			);
