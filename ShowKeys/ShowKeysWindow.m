@@ -36,7 +36,7 @@ NSTimer *timer;
 - (void) configure {
     self.backgroundColor = [NSColor colorWithCalibratedWhite:0.2 alpha:0.8];
     [self setOpaque:NO];
-    [self setHasShadow:YES];
+    [self setHasShadow:NO];
     [self setLevel:NSFloatingWindowLevel];
 }
 
@@ -75,12 +75,16 @@ NSTimer *timer;
         [self.keysDisplay setStringValue:keys];
     }
     else {
-        [timer invalidate];
         [self.keysDisplay setStringValue:[[self.keysDisplay stringValue] stringByAppendingString:keys]];
     }
+    
+    if(timer) {
+        [timer invalidate];
+    }
+    
     [self.keysDisplay setAlphaValue:1.0];
-    // TODO: Fancy animations
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.75
                                              target:self
                                            selector:@selector(timeout:)
                                            userInfo:nil
