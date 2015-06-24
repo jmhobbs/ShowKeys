@@ -407,6 +407,7 @@
 				05036FCF1B3A080D00C88B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05036FD01B3A080D00C88B7E /* Build configuration list for PBXNativeTarget "ShowKeysTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +416,7 @@
 				05036FD21B3A080D00C88B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
