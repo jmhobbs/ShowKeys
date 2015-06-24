@@ -28,7 +28,10 @@
                                                
                                                bool wipe = NO;
                                                
-                                               
+                                               if([event modifierFlags] & NSShiftKeyMask) {
+                                                   wipe = YES;
+                                                   [all appendString:@"SHIFT+"];
+                                               }
                                                if([event modifierFlags] & NSCommandKeyMask) {
                                                    wipe = YES;
                                                    [all appendString:@"⌘+"];
@@ -40,11 +43,14 @@
 
                                                switch ([event keyCode]) {
                                                    case 48:
-                                                       [all appendString:@"TAB"];
+                                                       [all appendString:@" [TAB]"];
                                                        break;
                                                    case 51:
                                                        [all appendString:@"⇤"];
                                                        wipe = YES;
+                                                       break;
+                                                   case 53:
+                                                       [all appendString:@"ESC"];
                                                        break;
                                                    case 36:
                                                        wipe = YES;
@@ -67,7 +73,7 @@
                                                        [all appendString:@"⬅"];
                                                        break;
                                                    default:
-//                                                       NSLog(@"keyCode: %d", [event keyCode]);
+                                                       NSLog(@"keyCode: %d", [event keyCode]);
                                                        [all appendString:[event charactersIgnoringModifiers]];
                                                        break;
                                                }
