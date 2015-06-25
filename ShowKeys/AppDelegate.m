@@ -42,7 +42,7 @@
     self.prefsWindow = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
     self.prefsWindow.delegate = self;
     
-    NSArray *specialKeys = @[@36, @48, @51, @53, @123, @124, @125, @126];
+    NSArray *specialKeys = @[@36, @48, @51, @53, @114, @116, @117, @121, @123, @124, @125, @126];
     
     [NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask
                                            handler:^(NSEvent *event){
@@ -64,35 +64,50 @@
                                                }
 
                                                switch ([event keyCode]) {
+                                                   case 36:
+                                                       wipe = YES;
+                                                       [all appendString:@"↵"];
+                                                       break;
                                                    case 48:
-                                                       [all appendString:@" [TAB]"];
+                                                       [all appendString:@"[TAB]"];
                                                        break;
                                                    case 51:
                                                        [all appendString:@"⇤"];
                                                        wipe = YES;
                                                        break;
                                                    case 53:
-                                                       [all appendString:@"ESC"];
+                                                       [all appendString:@"[ESC]"];
                                                        break;
-                                                   case 36:
-                                                       wipe = YES;
-                                                       [all appendString:@"↵"];
+                                                   case 114:
+                                                       [all appendString:@"[INS]"];
                                                        break;
-                                                   case 126:
+                                                   case 116:
                                                        wipe = YES;
-                                                       [all appendString:@"⬆"];
+                                                       [all appendString:@"[PGUP]"];
                                                        break;
-                                                   case 125:
+                                                   case 117:
                                                        wipe = YES;
-                                                       [all appendString:@"⬇"];
+                                                       [all appendString:@"[DEL]"];
+                                                       break;
+                                                   case 121:
+                                                       wipe = YES;
+                                                       [all appendString:@"[PGDN]"];
+                                                       break;
+                                                   case 123:
+                                                       wipe = YES;
+                                                       [all appendString:@"⬅"];
                                                        break;
                                                    case 124:
                                                        wipe = YES;
                                                        [all appendString:@"➡"];
                                                        break;
-                                                   case 123:
+                                                   case 125:
                                                        wipe = YES;
-                                                       [all appendString:@"⬅"];
+                                                       [all appendString:@"⬇"];
+                                                       break;
+                                                   case 126:
+                                                       wipe = YES;
+                                                       [all appendString:@"⬆"];
                                                        break;
                                                    default:
 //                                                       NSLog(@"keyCode: %d", [event keyCode]);
