@@ -12,6 +12,9 @@
 @interface AppDelegate ()
 
 @property (weak) IBOutlet ShowKeysWindow *window;
+@property (strong, nonatomic) PreferencesWindowController *prefsWindow;
+
+- (IBAction)preferencesLaunch:(id)sender;
 
 @end
 
@@ -21,6 +24,12 @@
 
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
     BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
+    // TODO: do something with that
+
+    self.prefsWindow = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
+    self.prefsWindow.delegate = self;
+    
+    NSArray *specialKeys = @[@36, @48, @51, @53, @123, @124, @125, @126];
     
     [NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask
                                            handler:^(NSEvent *event){
@@ -28,7 +37,7 @@
                                                
                                                bool wipe = NO;
                                                
-                                               if([event modifierFlags] & NSShiftKeyMask) {
+                                               if([event modifierFlags] & NSShiftKeyMask && [specialKeys containsObject:[NSNumber numberWithUnsignedInt:[event keyCode]]]) {
                                                    wipe = YES;
                                                    [all appendString:@"SHIFT+"];
                                                }
@@ -73,7 +82,7 @@
                                                        [all appendString:@"⬅"];
                                                        break;
                                                    default:
-                                                       NSLog(@"keyCode: %d", [event keyCode]);
+//                                                       NSLog(@"keyCode: %d", [event keyCode]);
                                                        [all appendString:[event charactersIgnoringModifiers]];
                                                        break;
                                                }
@@ -85,6 +94,20 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (IBAction)preferencesLaunch:(id)sender {
+    [self.prefsWindow.window makeKeyAndOrderFront:nil];
+}
+
+- (void)opacityChanged:(float)opacity {
+    self.window.backgroundColor = [NSColor colorWithCalibratedWhite:0.2 alpha:opacity];
+    [self.window setKeys:@"--TEST--" wipe:YES];
+}
+
+- (void)textColorChanged:(NSColor *)color {
+    [self.window.keysDisplay setTextColor:color];
+    [self.window setKeys:@"--TEST--" wipe:YES];    
 }
 
 @end

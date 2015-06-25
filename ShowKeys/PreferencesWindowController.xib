@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
+            <connections>
+                <outlet property="opacitySlider" destination="eQ3-ln-RM1" id="ekM-JT-bKB"/>
+                <outlet property="textColorChooser" destination="jQ2-I7-sxi" id="X6b-Kn-W9X"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="ShowKeys Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="352" height="226"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="226"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mvf-Z3-TQa">
+                        <rect key="frame" x="18" y="189" width="106" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Window Opacity" id="wfD-XU-W3o">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eQ3-ln-RM1">
+                        <rect key="frame" x="18" y="162" width="316" height="21"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="80" tickMarkPosition="above" sliderType="linear" id="CwY-i0-hfO"/>
+                        <connections>
+                            <action selector="sliderDidMove:" target="-2" id="JLw-XB-35l"/>
+                        </connections>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RE7-ML-my9">
+                        <rect key="frame" x="20" y="139" width="67" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Color" id="59P-KH-fRY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="jQ2-I7-sxi">
+                        <rect key="frame" x="20" y="101" width="312" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="giS-zx-E0N"/>
+                        </constraints>
+                        <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="textColorDidChange:" target="-2" id="hhb-HE-JCx"/>
+                        </connections>
+                    </colorWell>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jQ2-I7-sxi" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0SO-Tt-0uN"/>
+                    <constraint firstItem="RE7-ML-my9" firstAttribute="top" secondItem="eQ3-ln-RM1" secondAttribute="bottom" constant="8" id="2gy-2G-R83"/>
+                    <constraint firstItem="eQ3-ln-RM1" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="52c-zJ-jvP"/>
+                    <constraint firstItem="eQ3-ln-RM1" firstAttribute="top" secondItem="mvf-Z3-TQa" secondAttribute="bottom" constant="8" id="8eC-xq-FbF"/>
+                    <constraint firstItem="jQ2-I7-sxi" firstAttribute="top" secondItem="RE7-ML-my9" secondAttribute="bottom" constant="8" id="Acr-Md-U1X"/>
+                    <constraint firstItem="mvf-Z3-TQa" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="GTn-zi-Mht"/>
+                    <constraint firstItem="RE7-ML-my9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="GY9-38-5DK"/>
+                    <constraint firstAttribute="trailing" secondItem="eQ3-ln-RM1" secondAttribute="trailing" constant="20" id="Juc-OU-IaQ"/>
+                    <constraint firstItem="mvf-Z3-TQa" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="gSk-N3-JsV"/>
+                    <constraint firstAttribute="trailing" secondItem="jQ2-I7-sxi" secondAttribute="trailing" constant="20" id="yp1-YH-gtd"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="465" y="394"/>
+        </window>
+    </objects>
+</document>

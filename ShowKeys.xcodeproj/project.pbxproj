@@ -13,6 +13,8 @@
 		05036FBE1B3A080D00C88B7E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05036FBC1B3A080D00C88B7E /* MainMenu.xib */; };
 		05036FCA1B3A080D00C88B7E /* ShowKeysTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05036FC91B3A080D00C88B7E /* ShowKeysTests.m */; };
 		05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */; };
+		054FBE361B3BAF5300C7B884 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */; };
+		054FBE371B3BAF5300C7B884 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054FBE351B3BAF5300C7B884 /* PreferencesWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,9 @@
 		05036FC91B3A080D00C88B7E /* ShowKeysTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowKeysTests.m; sourceTree = "<group>"; };
 		05036FD31B3B11F100C88B7E /* ShowKeysWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowKeysWindow.h; sourceTree = "<group>"; };
 		05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowKeysWindow.m; sourceTree = "<group>"; };
+		054FBE331B3BAF5300C7B884 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		054FBE351B3BAF5300C7B884 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,9 @@
 				05036FD31B3B11F100C88B7E /* ShowKeysWindow.h */,
 				05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */,
 				05036FB31B3A080D00C88B7E /* Supporting Files */,
+				054FBE331B3BAF5300C7B884 /* PreferencesWindowController.h */,
+				054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */,
+				054FBE351B3BAF5300C7B884 /* PreferencesWindowController.xib */,
 			);
 			path = ShowKeys;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054FBE371B3BAF5300C7B884 /* PreferencesWindowController.xib in Resources */,
 				05036FBB1B3A080D00C88B7E /* Images.xcassets in Resources */,
 				05036FBE1B3A080D00C88B7E /* MainMenu.xib in Resources */,
 			);
@@ -217,6 +226,7 @@
 			files = (
 				05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */,
 				05036FB91B3A080D00C88B7E /* main.m in Sources */,
+				054FBE361B3BAF5300C7B884 /* PreferencesWindowController.m in Sources */,
 				05036FB71B3A080D00C88B7E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
