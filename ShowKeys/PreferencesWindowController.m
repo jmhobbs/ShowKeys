@@ -7,6 +7,7 @@
 //
 
 #import "PreferencesWindowController.h"
+#import "ConfigurationManager.h"
 
 @interface PreferencesWindowController ()
 
@@ -19,6 +20,8 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    [_opacitySlider setIntegerValue:(int)([ConfigurationManager instance].opacity * 100.0)];
+    [_textColorChooser setColor:[ConfigurationManager instance].textColor];
 }
 
 - (IBAction)sliderDidMove:(id)sender {

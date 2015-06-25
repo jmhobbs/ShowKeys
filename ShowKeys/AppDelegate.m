@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ShowKeysWindow.h"
+#import "ConfigurationManager.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
+    [[ConfigurationManager instance] load];
+    [self.window configure:[ConfigurationManager instance].opacity textColor:[ConfigurationManager instance].textColor];
+    
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
     BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
     // TODO: do something with that
@@ -93,7 +97,7 @@
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    [[ConfigurationManager instance] store];
 }
 
 - (IBAction)preferencesLaunch:(id)sender {
@@ -101,11 +105,13 @@
 }
 
 - (void)opacityChanged:(float)opacity {
+    [ConfigurationManager instance].opacity = opacity;
     self.window.backgroundColor = [NSColor colorWithCalibratedWhite:0.2 alpha:opacity];
     [self.window setKeys:@"--TEST--" wipe:YES];
 }
 
 - (void)textColorChanged:(NSColor *)color {
+    [ConfigurationManager instance].textColor = color;
     [self.window.keysDisplay setTextColor:color];
     [self.window setKeys:@"--TEST--" wipe:YES];    
 }

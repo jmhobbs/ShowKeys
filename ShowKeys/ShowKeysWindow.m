@@ -34,7 +34,12 @@ NSTimer *timer;
 }
 
 - (void) configure {
-    self.backgroundColor = [NSColor colorWithCalibratedWhite:0.2 alpha:0.8];
+    [self configure:0.8 textColor:[NSColor whiteColor]];
+}
+
+- (void)configure:(float)opacity textColor:(NSColor *)color {
+    [self setBackgroundColor:[NSColor colorWithCalibratedWhite:0.2 alpha:opacity]];
+    [self.keysDisplay setTextColor:color];
     [self setOpaque:NO];
     [self setHasShadow:NO];
     [self setLevel:NSFloatingWindowLevel];

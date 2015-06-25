@@ -12,6 +12,7 @@
 
 @property (weak) IBOutlet NSTextField *keysDisplay;
 
+- (void)configure:(float)opacity textColor:(NSColor *)color;
 - (void)setKeys:(NSString *)keys wipe:(bool)wipe;
 
 @end
