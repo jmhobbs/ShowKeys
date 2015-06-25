@@ -24,7 +24,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
     [[ConfigurationManager instance] load];
-    [self.window configure:[ConfigurationManager instance].opacity textColor:[ConfigurationManager instance].textColor];
+    [self.window configure:[ConfigurationManager instance].opacity
+               fadeTimeout:[ConfigurationManager instance].fadeTimeout
+                 textColor:[ConfigurationManager instance].textColor];
     
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
     BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
@@ -114,6 +116,12 @@
     [ConfigurationManager instance].textColor = color;
     [self.window.keysDisplay setTextColor:color];
     [self.window setKeys:@"--TEST--" wipe:YES];    
+}
+
+- (void)fadeTimeoutChanged:(float)timeout {
+    [ConfigurationManager instance].fadeTimeout = timeout;
+    self.window.fadeTimeout = timeout;
+    [self.window setKeys:@"--TEST--" wipe:YES];
 }
 
 @end

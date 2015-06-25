@@ -8,8 +8,9 @@
 
 #import "ConfigurationManager.h"
 
-static NSString *const kPreferenceOpacity   = @"opacity";
-static NSString *const kPreferenceTextColor = @"textColor";
+static NSString *const kPreferenceOpacity    = @"opacity";
+static NSString *const kPrefrenceFadeTimeout = @"fade";
+static NSString *const kPreferenceTextColor  = @"textColor";
 
 @implementation ConfigurationManager
 
@@ -31,6 +32,7 @@ static NSString *const kPreferenceTextColor = @"textColor";
 
 - (void)reset {
     _opacity = 0.8;
+    _fadeTimeout = 1.0;
     _textColor = [NSColor whiteColor];
 }
 
@@ -38,6 +40,7 @@ static NSString *const kPreferenceTextColor = @"textColor";
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     _opacity = [prefs floatForKey:kPreferenceOpacity];
+    _fadeTimeout = [prefs floatForKey:kPrefrenceFadeTimeout];
     _textColor = [prefs objectForKey:kPreferenceTextColor];
     
     NSData *data = [prefs objectForKey:kPreferenceTextColor];
@@ -58,6 +61,7 @@ static NSString *const kPreferenceTextColor = @"textColor";
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     [prefs setFloat:_opacity forKey:kPreferenceOpacity];
+    [prefs setFloat:_fadeTimeout forKey:kPrefrenceFadeTimeout];
     NSData *data = [NSArchiver archivedDataWithRootObject:_textColor];
     [prefs setObject:data forKey:kPreferenceTextColor];
     [prefs synchronize];

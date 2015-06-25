@@ -11,6 +11,7 @@
 @protocol PreferencesWindowDelegate <NSObject>
 
 - (void)opacityChanged:(float)opacity;
+- (void)fadeTimeoutChanged:(float)timeout;
 - (void)textColorChanged:(NSColor *)color;
 
 @end

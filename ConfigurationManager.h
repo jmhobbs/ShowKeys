@@ -12,6 +12,7 @@
 @interface ConfigurationManager : NSObject
 
 @property float opacity;
+@property float fadeTimeout;
 @property (strong, nonatomic) NSColor *textColor;
 
 + (ConfigurationManager *)instance;

@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
+                <outlet property="fadeOutDisplay" destination="FZ7-mM-BZa" id="LIF-yT-mtp"/>
+                <outlet property="fadeOutSlider" destination="vD5-Qm-XTx" id="ebk-UJ-fwd"/>
                 <outlet property="opacitySlider" destination="eQ3-ln-RM1" id="ekM-JT-bKB"/>
                 <outlet property="textColorChooser" destination="jQ2-I7-sxi" id="X6b-Kn-W9X"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -38,9 +40,35 @@
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RE7-ML-my9">
-                        <rect key="frame" x="20" y="139" width="67" height="17"/>
+                        <rect key="frame" x="18" y="139" width="67" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Color" id="59P-KH-fRY">
                             <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ar3-e0-ava">
+                        <rect key="frame" x="18" y="76" width="91" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Fade Out" id="Zvq-B2-dc5">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vD5-Qm-XTx">
+                        <rect key="frame" x="18" y="43" width="268" height="27"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="4.2105263157894735" tickMarkPosition="below" numberOfTickMarks="20" allowsTickMarkValuesOnly="YES" sliderType="linear" id="106-lk-7Zb"/>
+                        <connections>
+                            <action selector="fadeOutSliderDidMove:" target="-2" id="g8p-Kt-nib"/>
+                        </connections>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZ7-mM-BZa">
+                        <rect key="frame" x="290" y="49" width="44" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="6s5-dd-99A"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="1.00s" id="HrG-NV-YNN">
+                            <font key="font" size="12" name="HelveticaNeue-Bold"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -58,14 +86,21 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="jQ2-I7-sxi" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0SO-Tt-0uN"/>
+                    <constraint firstItem="vD5-Qm-XTx" firstAttribute="centerY" secondItem="FZ7-mM-BZa" secondAttribute="centerY" constant="2" id="0dm-52-Q3I"/>
                     <constraint firstItem="RE7-ML-my9" firstAttribute="top" secondItem="eQ3-ln-RM1" secondAttribute="bottom" constant="8" id="2gy-2G-R83"/>
                     <constraint firstItem="eQ3-ln-RM1" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="52c-zJ-jvP"/>
                     <constraint firstItem="eQ3-ln-RM1" firstAttribute="top" secondItem="mvf-Z3-TQa" secondAttribute="bottom" constant="8" id="8eC-xq-FbF"/>
                     <constraint firstItem="jQ2-I7-sxi" firstAttribute="top" secondItem="RE7-ML-my9" secondAttribute="bottom" constant="8" id="Acr-Md-U1X"/>
                     <constraint firstItem="mvf-Z3-TQa" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="GTn-zi-Mht"/>
-                    <constraint firstItem="RE7-ML-my9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="GY9-38-5DK"/>
+                    <constraint firstItem="RE7-ML-my9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="GY9-38-5DK"/>
                     <constraint firstAttribute="trailing" secondItem="eQ3-ln-RM1" secondAttribute="trailing" constant="20" id="Juc-OU-IaQ"/>
+                    <constraint firstItem="Ar3-e0-ava" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="P0V-CK-bRs"/>
+                    <constraint firstItem="FZ7-mM-BZa" firstAttribute="leading" secondItem="vD5-Qm-XTx" secondAttribute="trailing" constant="8" id="PCb-v1-sRX"/>
+                    <constraint firstItem="Ar3-e0-ava" firstAttribute="top" secondItem="jQ2-I7-sxi" secondAttribute="bottom" constant="8" id="TgV-BR-VXg"/>
+                    <constraint firstItem="vD5-Qm-XTx" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="dik-7E-XIf"/>
                     <constraint firstItem="mvf-Z3-TQa" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="gSk-N3-JsV"/>
+                    <constraint firstItem="vD5-Qm-XTx" firstAttribute="top" secondItem="Ar3-e0-ava" secondAttribute="bottom" constant="8" id="gw6-uJ-jPE"/>
+                    <constraint firstAttribute="trailing" secondItem="FZ7-mM-BZa" secondAttribute="trailing" constant="20" id="nFF-Yt-DgP"/>
                     <constraint firstAttribute="trailing" secondItem="jQ2-I7-sxi" secondAttribute="trailing" constant="20" id="yp1-YH-gtd"/>
                 </constraints>
             </view>

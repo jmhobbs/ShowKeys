@@ -34,18 +34,17 @@ NSTimer *timer;
 }
 
 - (void) configure {
-    [self configure:0.8 textColor:[NSColor whiteColor]];
+    [self configure:0.8 fadeTimeout:1.0 textColor:[NSColor whiteColor]];
 }
 
-- (void)configure:(float)opacity textColor:(NSColor *)color {
+- (void)configure:(float)opacity fadeTimeout:(float)timeout textColor:(NSColor *)color {
     [self setBackgroundColor:[NSColor colorWithCalibratedWhite:0.2 alpha:opacity]];
     [self.keysDisplay setTextColor:color];
+    self.fadeTimeout = timeout;
     [self setOpaque:NO];
     [self setHasShadow:NO];
     [self setLevel:NSFloatingWindowLevel];
 }
-
-
 
 -(void)mouseDown:(NSEvent *)theEvent {
     NSRect  windowFrame = [self frame];
@@ -76,7 +75,7 @@ NSTimer *timer;
 }
 
 - (void)setKeys:(NSString *)keys wipe:(bool)wipe {
-    if(wipe || nil == timer || ! timer.valid || [keys isEqualTo:@" "] || [[self.keysDisplay stringValue] isEqualTo:@"↵"]) {
+    if(wipe || (self.fadeTimeout >= 0.25 && (nil == timer || ! timer.valid)) || [keys isEqualTo:@" "] || [[self.keysDisplay stringValue] isEqualTo:@"↵"]) {
         [self.keysDisplay setStringValue:keys];
     }
     else {
@@ -89,11 +88,13 @@ NSTimer *timer;
     
     [self.keysDisplay setAlphaValue:1.0];
 
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.75
-                                             target:self
-                                           selector:@selector(timeout:)
-                                           userInfo:nil
-                                            repeats:NO];
+    if(self.fadeTimeout >= 0.25) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:self.fadeTimeout - 0.25
+                                                 target:self
+                                               selector:@selector(timeout:)
+                                               userInfo:nil
+                                                repeats:NO];
+    }
 }
 
 - (void)timeout:(NSTimer *)timer {
