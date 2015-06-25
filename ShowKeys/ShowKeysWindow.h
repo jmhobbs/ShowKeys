@@ -13,7 +13,7 @@
 @property float fadeTimeout;
 @property (weak) IBOutlet NSTextField *keysDisplay;
 
-- (void)configure:(float)opacity fadeTimeout:(float)timeout textColor:(NSColor *)color;
+- (void)configure:(float)opacity fadeTimeout:(float)timeout fontSize:(NSInteger)size textColor:(NSColor *)color;
 - (void)setKeys:(NSString *)keys wipe:(bool)wipe;
 
 @end

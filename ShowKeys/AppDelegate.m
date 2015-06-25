@@ -26,12 +26,19 @@
     [[ConfigurationManager instance] load];
     [self.window configure:[ConfigurationManager instance].opacity
                fadeTimeout:[ConfigurationManager instance].fadeTimeout
+                  fontSize:[ConfigurationManager instance].fontSize
                  textColor:[ConfigurationManager instance].textColor];
     
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
-    BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
-    // TODO: do something with that
+    AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
 
+    // I've got my own font preferences 😁
+    NSArray *fonts = [[NSFontManager sharedFontManager] availableFontFamilies];
+    if([fonts containsObject:@"Source Code Pro"]) {
+        NSFont *font = [NSFont fontWithName:@"Source Code Pro Bold" size:self.window.keysDisplay.font.pointSize];
+        [self.window.keysDisplay setFont:font];
+    }
+    
     self.prefsWindow = [[PreferencesWindowController alloc] initWithWindowNibName:@"PreferencesWindowController"];
     self.prefsWindow.delegate = self;
     
@@ -121,6 +128,13 @@
 - (void)fadeTimeoutChanged:(float)timeout {
     [ConfigurationManager instance].fadeTimeout = timeout;
     self.window.fadeTimeout = timeout;
+    [self.window setKeys:@"--TEST--" wipe:YES];
+}
+
+- (void)fontSizeChanged:(NSInteger)size {
+    [ConfigurationManager instance].fontSize = size;
+    NSFont *font = [NSFont fontWithName:self.window.keysDisplay.font.fontName size:(float)size];
+    [self.window.keysDisplay setFont:font];
     [self.window setKeys:@"--TEST--" wipe:YES];
 }
 

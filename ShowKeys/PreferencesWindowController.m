@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet NSSlider *opacitySlider;
 @property (weak) IBOutlet NSColorWell *textColorChooser;
+@property (weak) IBOutlet NSSlider *fontSizeSlider;
 @property (weak) IBOutlet NSSlider *fadeOutSlider;
 @property (weak) IBOutlet NSTextField *fadeOutDisplay;
 
@@ -25,6 +26,7 @@
     [_opacitySlider setIntegerValue:(int)([ConfigurationManager instance].opacity * 100.0)];
     [_fadeOutSlider setFloatValue:[ConfigurationManager instance].fadeTimeout / 0.25];
     [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", [ConfigurationManager instance].fadeTimeout]];
+    [_fontSizeSlider setIntegerValue:[ConfigurationManager instance].fontSize];
     [_textColorChooser setColor:[ConfigurationManager instance].textColor];
 }
 
@@ -45,6 +47,10 @@
         [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", seconds]];
     }
     [self.delegate fadeTimeoutChanged:seconds];
+}
+
+- (IBAction)fontSizeSliderDidMove:(id)sender {
+    [self.delegate fontSizeChanged:[sender integerValue]];
 }
 
 @end

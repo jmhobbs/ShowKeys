@@ -12,6 +12,7 @@
 
 - (void)opacityChanged:(float)opacity;
 - (void)fadeTimeoutChanged:(float)timeout;
+- (void)fontSizeChanged:(NSInteger)size;
 - (void)textColorChanged:(NSColor *)color;
 
 @end

@@ -34,13 +34,15 @@ NSTimer *timer;
 }
 
 - (void) configure {
-    [self configure:0.8 fadeTimeout:1.0 textColor:[NSColor whiteColor]];
+    [self configure:0.8 fadeTimeout:1.0 fontSize:32 textColor:[NSColor whiteColor]];
 }
 
-- (void)configure:(float)opacity fadeTimeout:(float)timeout textColor:(NSColor *)color {
+- (void)configure:(float)opacity fadeTimeout:(float)timeout fontSize:(NSInteger)size textColor:(NSColor *)color {
     [self setBackgroundColor:[NSColor colorWithCalibratedWhite:0.2 alpha:opacity]];
     [self.keysDisplay setTextColor:color];
     self.fadeTimeout = timeout;
+    NSFont *font = [NSFont fontWithName:self.keysDisplay.font.fontName size:(float)size];
+    [self.keysDisplay setFont:font];
     [self setOpaque:NO];
     [self setHasShadow:NO];
     [self setLevel:NSFloatingWindowLevel];

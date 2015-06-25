@@ -13,12 +13,13 @@
 
 @property float opacity;
 @property float fadeTimeout;
+@property NSInteger fontSize;
 @property (strong, nonatomic) NSColor *textColor;
 
 + (ConfigurationManager *)instance;
 
 - (void)reset;
-- (bool)load;
-- (bool)store;
+- (void)load;
+- (void)store;
 
 @end

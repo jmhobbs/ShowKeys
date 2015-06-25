@@ -10,6 +10,7 @@
 
 static NSString *const kPreferenceOpacity    = @"opacity";
 static NSString *const kPrefrenceFadeTimeout = @"fade";
+static NSString *const kPreferenceFontSize    = @"fontSize";
 static NSString *const kPreferenceTextColor  = @"textColor";
 
 @implementation ConfigurationManager
@@ -33,40 +34,42 @@ static NSString *const kPreferenceTextColor  = @"textColor";
 - (void)reset {
     _opacity = 0.8;
     _fadeTimeout = 1.0;
+    _fontSize = 32;
     _textColor = [NSColor whiteColor];
 }
 
-- (bool)load {
+- (void)load {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     _opacity = [prefs floatForKey:kPreferenceOpacity];
     _fadeTimeout = [prefs floatForKey:kPrefrenceFadeTimeout];
-    _textColor = [prefs objectForKey:kPreferenceTextColor];
+
+    _fontSize = [prefs integerForKey:kPreferenceFontSize];
+    if(_fontSize == 0) {
+        _fontSize = 32;
+    }
     
     NSData *data = [prefs objectForKey:kPreferenceTextColor];
     if(nil == data) {
-        [self reset];
-        return NO;
-    }
-    
-    _textColor = [NSUnarchiver unarchiveObjectWithData:data];
-    if(![_textColor isKindOfClass:[NSColor class]]) {
         _textColor = [NSColor whiteColor];
     }
-    
-    return YES;
+    else {
+        _textColor = [NSUnarchiver unarchiveObjectWithData:data];
+        if(![_textColor isKindOfClass:[NSColor class]]) {
+            _textColor = [NSColor whiteColor];
+        }
+    }
 }
 
-- (bool)store {
+- (void)store {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     [prefs setFloat:_opacity forKey:kPreferenceOpacity];
     [prefs setFloat:_fadeTimeout forKey:kPrefrenceFadeTimeout];
+    [prefs setInteger:_fontSize forKey:kPreferenceFontSize];
     NSData *data = [NSArchiver archivedDataWithRootObject:_textColor];
     [prefs setObject:data forKey:kPreferenceTextColor];
     [prefs synchronize];
-    
-    return YES;
 }
 
 @end
