@@ -14,6 +14,7 @@
 - (void)fadeTimeoutChanged:(float)timeout;
 - (void)fontSizeChanged:(NSInteger)size;
 - (void)textColorChanged:(NSColor *)color;
+- (void)maxCharsChanged:(NSInteger)chars;
 
 @end
 

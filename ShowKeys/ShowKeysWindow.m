@@ -34,15 +34,20 @@ NSTimer *timer;
 }
 
 - (void) configure {
-    [self configure:0.8 fadeTimeout:1.0 fontSize:32 textColor:[NSColor whiteColor]];
+    [self configure:0.8
+        fadeTimeout:1.0
+            fontSize:32
+            maxChars:32
+            textColor:[NSColor whiteColor]];
 }
 
-- (void)configure:(float)opacity fadeTimeout:(float)timeout fontSize:(NSInteger)size textColor:(NSColor *)color {
+- (void)configure:(float)opacity fadeTimeout:(float)timeout fontSize:(NSInteger)size maxChars:(NSInteger)maxChars textColor:(NSColor *)color {
     [self setBackgroundColor:[NSColor colorWithCalibratedWhite:0.2 alpha:opacity]];
     [self.keysDisplay setTextColor:color];
     self.fadeTimeout = timeout;
     NSFont *font = [NSFont fontWithName:self.keysDisplay.font.fontName size:(float)size];
     [self.keysDisplay setFont:font];
+    self.maxChars = maxChars;
     [self setOpaque:NO];
     [self setHasShadow:NO];
     [self setLevel:NSFloatingWindowLevel];
@@ -81,7 +86,13 @@ NSTimer *timer;
         [self.keysDisplay setStringValue:keys];
     }
     else {
-        [self.keysDisplay setStringValue:[[self.keysDisplay stringValue] stringByAppendingString:keys]];
+        // TODO: This doesn't take into account escapes and combinations,
+        // so it could trim "CTRL + L" to "TRL + L" for example.
+        NSString *currentKeys = [self.keysDisplay stringValue];
+        if([currentKeys length] + [keys length] > _maxChars) {
+            currentKeys = [currentKeys substringFromIndex:[keys length]];
+        }
+        [self.keysDisplay setStringValue:[currentKeys stringByAppendingString:keys]];
     }
     
     if(timer) {

@@ -15,6 +15,7 @@
 @property float fadeTimeout;
 @property NSInteger fontSize;
 @property (strong, nonatomic) NSColor *textColor;
+@property NSInteger maxChars;
 
 + (ConfigurationManager *)instance;
 

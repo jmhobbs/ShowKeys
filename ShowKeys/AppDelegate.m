@@ -27,6 +27,7 @@
     [self.window configure:[ConfigurationManager instance].opacity
                fadeTimeout:[ConfigurationManager instance].fadeTimeout
                   fontSize:[ConfigurationManager instance].fontSize
+                  maxChars:[ConfigurationManager instance].maxChars
                  textColor:[ConfigurationManager instance].textColor];
     
     NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
@@ -150,6 +151,12 @@
     [ConfigurationManager instance].fontSize = size;
     NSFont *font = [NSFont fontWithName:self.window.keysDisplay.font.fontName size:(float)size];
     [self.window.keysDisplay setFont:font];
+    [self.window setKeys:@"--TEST--" wipe:YES];
+}
+
+- (void)maxCharsChanged:(NSInteger)chars {
+    [ConfigurationManager instance].maxChars = chars;
+    self.window.maxChars = chars;
     [self.window setKeys:@"--TEST--" wipe:YES];
 }
 

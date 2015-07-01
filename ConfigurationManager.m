@@ -10,8 +10,9 @@
 
 static NSString *const kPreferenceOpacity    = @"opacity";
 static NSString *const kPrefrenceFadeTimeout = @"fade";
-static NSString *const kPreferenceFontSize    = @"fontSize";
+static NSString *const kPreferenceFontSize   = @"fontSize";
 static NSString *const kPreferenceTextColor  = @"textColor";
+static NSString *const kPreferenceMaxChars   = @"maxChars";
 
 @implementation ConfigurationManager
 
@@ -36,6 +37,7 @@ static NSString *const kPreferenceTextColor  = @"textColor";
     _fadeTimeout = 1.0;
     _fontSize = 32;
     _textColor = [NSColor whiteColor];
+    _maxChars = 32;
 }
 
 - (void)load {
@@ -59,6 +61,11 @@ static NSString *const kPreferenceTextColor  = @"textColor";
             _textColor = [NSColor whiteColor];
         }
     }
+    
+    _maxChars = [prefs integerForKey:kPreferenceMaxChars];
+    if(_maxChars == 0) {
+        _maxChars = 32;
+    }
 }
 
 - (void)store {
@@ -68,6 +75,7 @@ static NSString *const kPreferenceTextColor  = @"textColor";
     [prefs setFloat:_fadeTimeout forKey:kPrefrenceFadeTimeout];
     [prefs setInteger:_fontSize forKey:kPreferenceFontSize];
     NSData *data = [NSArchiver archivedDataWithRootObject:_textColor];
+    [prefs setInteger:_maxChars forKey:kPreferenceMaxChars];
     [prefs setObject:data forKey:kPreferenceTextColor];
     [prefs synchronize];
 }
