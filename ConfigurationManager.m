@@ -39,6 +39,16 @@ static NSString *const kPreferenceMaxChars    = @"maxChars";
     return self;
 }
 
+- (void)reset {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPreferenceOpacity];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPreferenceFadeTimeout];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPreferenceFontSize];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPreferenceMaxChars];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPreferenceTextColor];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self load];
+}
+
 - (void)load {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     

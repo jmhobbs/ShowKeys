@@ -25,6 +25,10 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    [self updateFromConfig];
+}
+
+- (void)updateFromConfig {
     [_opacitySlider setIntegerValue:(int)([ConfigurationManager instance].opacity * 100.0)];
     [_fadeOutSlider setFloatValue:[ConfigurationManager instance].fadeTimeout / 0.25];
     [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", [ConfigurationManager instance].fadeTimeout]];
@@ -62,5 +66,15 @@
     [self.delegate maxCharsChanged:[sender integerValue]];
 }
 
+- (IBAction)resetButtonPressed:(id)sender {
+    [[ConfigurationManager instance] reset];
+    [self updateFromConfig];
+    [self.delegate opacityChanged:[_opacitySlider floatValue]/100.0];
+    [self.delegate fadeTimeoutChanged:0.25 * (float)[_fadeOutSlider intValue]];
+    [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", 0.25 * (float)[_fadeOutSlider intValue]]];
+    [self.delegate textColorChanged:[_textColorChooser color]];
+    [self.delegate fontSizeChanged:[_fontSizeSlider integerValue]];
+    [self.delegate maxCharsChanged:[_maxCharsStepper integerValue]];
+}
 
 @end
