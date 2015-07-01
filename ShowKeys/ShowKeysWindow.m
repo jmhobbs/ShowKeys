@@ -111,11 +111,17 @@ NSTimer *timer;
 }
 
 - (void)timeout:(NSTimer *)timer {
-    [NSAnimationContext beginGrouping]; {
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [[NSAnimationContext currentContext] setDuration:.25];
         [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
         [self.keysDisplay.animator setAlphaValue:0.0];
-    } [NSAnimationContext endGrouping];
+    }
+                        completionHandler:^{
+                            NSRect window = [self frame];
+                            window.size.width = 320;  // TODO: Make this width configurable
+                            [self setFrame:window display:YES animate:YES];
+                        }];
 }
 
 @end
