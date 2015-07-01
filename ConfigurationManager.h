@@ -19,7 +19,6 @@
 
 + (ConfigurationManager *)instance;
 
-- (void)reset;
 - (void)load;
 - (void)store;
 
