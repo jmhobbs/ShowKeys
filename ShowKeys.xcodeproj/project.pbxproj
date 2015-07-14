@@ -15,6 +15,8 @@
 		05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */; };
 		054FBE361B3BAF5300C7B884 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */; };
 		054FBE371B3BAF5300C7B884 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054FBE351B3BAF5300C7B884 /* PreferencesWindowController.xib */; };
+		05521DB41B44AA9100D4CBC1 /* Key.m in Sources */ = {isa = PBXBuildFile; fileRef = 05521DB31B44AA9100D4CBC1 /* Key.m */; };
+		05521DBF1B44B3C800D4CBC1 /* ShowKeysWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05521DBD1B44B3C800D4CBC1 /* ShowKeysWindowController.m */; };
 		05DCAB4F1B3C900700636D7A /* ConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DCAB4E1B3C900700636D7A /* ConfigurationManager.m */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,10 @@
 		054FBE331B3BAF5300C7B884 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		054FBE351B3BAF5300C7B884 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		05521DB21B44AA9100D4CBC1 /* Key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Key.h; path = ../Key.h; sourceTree = "<group>"; };
+		05521DB31B44AA9100D4CBC1 /* Key.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Key.m; path = ../Key.m; sourceTree = "<group>"; };
+		05521DBC1B44B3C800D4CBC1 /* ShowKeysWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowKeysWindowController.h; sourceTree = SOURCE_ROOT; };
+		05521DBD1B44B3C800D4CBC1 /* ShowKeysWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowKeysWindowController.m; sourceTree = SOURCE_ROOT; };
 		05DCAB4D1B3C900700636D7A /* ConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationManager.h; path = ../ConfigurationManager.h; sourceTree = "<group>"; };
 		05DCAB4E1B3C900700636D7A /* ConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationManager.m; path = ../ConfigurationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +93,8 @@
 		05036FB21B3A080D00C88B7E /* ShowKeys */ = {
 			isa = PBXGroup;
 			children = (
+				05521DB21B44AA9100D4CBC1 /* Key.h */,
+				05521DB31B44AA9100D4CBC1 /* Key.m */,
 				05DCAB4D1B3C900700636D7A /* ConfigurationManager.h */,
 				05DCAB4E1B3C900700636D7A /* ConfigurationManager.m */,
 				05036FB51B3A080D00C88B7E /* AppDelegate.h */,
@@ -95,6 +103,8 @@
 				05036FBC1B3A080D00C88B7E /* MainMenu.xib */,
 				05036FD31B3B11F100C88B7E /* ShowKeysWindow.h */,
 				05036FD41B3B11F100C88B7E /* ShowKeysWindow.m */,
+				05521DBC1B44B3C800D4CBC1 /* ShowKeysWindowController.h */,
+				05521DBD1B44B3C800D4CBC1 /* ShowKeysWindowController.m */,
 				05036FB31B3A080D00C88B7E /* Supporting Files */,
 				054FBE331B3BAF5300C7B884 /* PreferencesWindowController.h */,
 				054FBE341B3BAF5300C7B884 /* PreferencesWindowController.m */,
@@ -230,8 +240,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				05036FD51B3B11F100C88B7E /* ShowKeysWindow.m in Sources */,
+				05521DBF1B44B3C800D4CBC1 /* ShowKeysWindowController.m in Sources */,
 				05DCAB4F1B3C900700636D7A /* ConfigurationManager.m in Sources */,
 				05036FB91B3A080D00C88B7E /* main.m in Sources */,
+				05521DB41B44AA9100D4CBC1 /* Key.m in Sources */,
 				054FBE361B3BAF5300C7B884 /* PreferencesWindowController.m in Sources */,
 				05036FB71B3A080D00C88B7E /* AppDelegate.m in Sources */,
 			);

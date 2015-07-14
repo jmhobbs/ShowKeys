@@ -39,11 +39,15 @@
 }
 
 - (IBAction)sliderDidMove:(id)sender {
-    [self.delegate opacityChanged:[sender floatValue]/100.0];
+    [ConfigurationManager instance].opacity = [sender floatValue]/100.0;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 - (IBAction)textColorDidChange:(id)sender {
-    [self.delegate textColorChanged:[sender color]];
+    [ConfigurationManager instance].textColor = [sender color];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 - (IBAction)fadeOutSliderDidMove:(id)sender {
@@ -54,27 +58,29 @@
     else {
         [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", seconds]];
     }
-    [self.delegate fadeTimeoutChanged:seconds];
+    [ConfigurationManager instance].fadeTimeout = seconds;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 - (IBAction)fontSizeSliderDidMove:(id)sender {
-    [self.delegate fontSizeChanged:[sender integerValue]];
+    [ConfigurationManager instance].fontSize = [sender integerValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 - (IBAction)stepperDidChange:(id)sender {
     [_maxCharsDisplay setIntegerValue:[sender integerValue]];
-    [self.delegate maxCharsChanged:[sender integerValue]];
+    [ConfigurationManager instance].maxChars = [sender integerValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 - (IBAction)resetButtonPressed:(id)sender {
     [[ConfigurationManager instance] reset];
     [self updateFromConfig];
-    [self.delegate opacityChanged:[_opacitySlider floatValue]/100.0];
-    [self.delegate fadeTimeoutChanged:0.25 * (float)[_fadeOutSlider intValue]];
-    [_fadeOutDisplay setStringValue:[NSString stringWithFormat:@"%0.02fs", 0.25 * (float)[_fadeOutSlider intValue]]];
-    [self.delegate textColorChanged:[_textColorChooser color]];
-    [self.delegate fontSizeChanged:[_fontSizeSlider integerValue]];
-    [self.delegate maxCharsChanged:[_maxCharsStepper integerValue]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConfigurationChangedNotification
+                                                        object:self];
 }
 
 @end

@@ -7,50 +7,10 @@
 //
 
 #import "ShowKeysWindow.h"
-#import <QuartzCore/QuartzCore.h>
 
 
-@implementation ShowKeysWindow
-
-NSPoint initialLocation;
-NSTimer *timer;
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    [self configure];
-    return self;
-}
-
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
-    self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
-    [self configure];
-    return self;
-}
-
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen {
-    self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag screen:screen];
-    [self configure];
-    return self;
-}
-
-- (void) configure {
-    [self configure:0.8
-        fadeTimeout:1.0
-            fontSize:32
-            maxChars:32
-            textColor:[NSColor whiteColor]];
-}
-
-- (void)configure:(float)opacity fadeTimeout:(float)timeout fontSize:(NSInteger)size maxChars:(NSInteger)maxChars textColor:(NSColor *)color {
-    [self setBackgroundColor:[NSColor colorWithCalibratedWhite:0.2 alpha:opacity]];
-    [self.keysDisplay setTextColor:color];
-    self.fadeTimeout = timeout;
-    NSFont *font = [NSFont fontWithName:self.keysDisplay.font.fontName size:(float)size];
-    [self.keysDisplay setFont:font];
-    self.maxChars = maxChars;
-    [self setOpaque:NO];
-    [self setHasShadow:NO];
-    [self setLevel:NSFloatingWindowLevel];
+@implementation ShowKeysWindow {
+    NSPoint initialLocation;
 }
 
 -(void)mouseDown:(NSEvent *)theEvent {
@@ -79,53 +39,6 @@ NSTimer *timer;
     
     //go ahead and move the window to the new location
     [self setFrameOrigin:newOrigin];
-}
-
-- (void)setKeys:(NSString *)keys wipe:(bool)wipe {
-    if(wipe || (self.fadeTimeout >= 0.25 && (nil == timer || ! timer.valid)) || [keys isEqualTo:@" "] || [[self.keysDisplay stringValue] isEqualTo:@"↵"]) {
-        [self.keysDisplay setStringValue:keys];
-        [self resetWindowWidth];
-    }
-    else {
-        // TODO: This doesn't take into account escapes and combinations,
-        // so it could trim "CTRL + L" to "TRL + L" for example.
-        NSString *currentKeys = [self.keysDisplay stringValue];
-        if([currentKeys length] + [keys length] > _maxChars) {
-            currentKeys = [currentKeys substringFromIndex:[keys length]];
-        }
-        [self.keysDisplay setStringValue:[currentKeys stringByAppendingString:keys]];
-    }
-    
-    if(timer) {
-        [timer invalidate];
-    }
-    
-    [self.keysDisplay setAlphaValue:1.0];
-
-    if(self.fadeTimeout >= 0.25) {
-        timer = [NSTimer scheduledTimerWithTimeInterval:self.fadeTimeout - 0.25
-                                                 target:self
-                                               selector:@selector(timeout:)
-                                               userInfo:nil
-                                                repeats:NO];
-    }
-}
-
-- (void)resetWindowWidth {
-    NSRect window = [self frame];
-    window.size.width = 320;  // TODO: Make this width configurable
-    [self setFrame:window display:YES animate:YES];
-}
-
-- (void)timeout:(NSTimer *)timer {
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        [[NSAnimationContext currentContext] setDuration:.25];
-        [[NSAnimationContext currentContext] setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-        [self.keysDisplay.animator setAlphaValue:0.0];
-    }
-                        completionHandler:^{
-                            [self resetWindowWidth];
-                        }];
 }
 
 @end

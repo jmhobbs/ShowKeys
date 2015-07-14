@@ -10,16 +10,6 @@
 
 @interface ShowKeysWindow : NSWindow
 
-@property float fadeTimeout;
-@property (weak) IBOutlet NSTextField *keysDisplay;
-@property NSInteger maxChars;
-
-- (void)configure:(float)opacity
-      fadeTimeout:(float)timeout
-         fontSize:(NSInteger)size
-         maxChars:(NSInteger)maxChars
-        textColor:(NSColor *)color;
-
-- (void)setKeys:(NSString *)keys wipe:(bool)wipe;
+@property (strong, nonatomic) IBOutlet NSTextField *keysDisplay;
 
 @end

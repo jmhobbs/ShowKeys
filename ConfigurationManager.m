@@ -28,7 +28,7 @@ static NSString *const kPreferenceMaxChars    = @"maxChars";
 
 - (instancetype)initInstance {
     self = [super init];
-    
+
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
                                                               kPreferenceOpacity: @0.8,
                                                               kPreferenceFadeTimeout: @1.0,
@@ -37,6 +37,10 @@ static NSString *const kPreferenceMaxChars    = @"maxChars";
                                                               kPreferenceTextColor: [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]]
                                                               }];
     return self;
+}
+
++ (NSSet *)keyPathsForValuesAffectingAddress {
+    return [NSSet setWithObjects:@"UpdateConfiguration", nil];
 }
 
 - (void)reset {

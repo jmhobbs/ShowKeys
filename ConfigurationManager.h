@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+static NSString *const kConfigurationChangedNotification   = @"ConfigurationChangedNotification";
+
 @interface ConfigurationManager : NSObject
 
 @property float opacity;

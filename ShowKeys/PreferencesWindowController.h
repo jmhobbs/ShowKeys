@@ -8,18 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol PreferencesWindowDelegate <NSObject>
-
-- (void)opacityChanged:(float)opacity;
-- (void)fadeTimeoutChanged:(float)timeout;
-- (void)fontSizeChanged:(NSInteger)size;
-- (void)textColorChanged:(NSColor *)color;
-- (void)maxCharsChanged:(NSInteger)chars;
-
-@end
 
 @interface PreferencesWindowController : NSWindowController
-
-@property id<PreferencesWindowDelegate> delegate;
 
 @end
