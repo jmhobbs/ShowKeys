@@ -6,11 +6,10 @@ It's not very complete, but it is functional.  Pull requests and issues are very
 
 ## Demo Video
 
-  <video controls style="max-width: 60%">
-    <source src="http://dropit.velvetcache.org.s3.amazonaws.com/jmhobbs/MjY0AitRCA/showkeysdemo.mp4" type="video/mp4">
-    <a href="http://dropitvc.herokuapp.com/u/MjY0AitRCA"><img src="http://dropit.velvetcache.org.s3.amazonaws.com/jmhobbs/MjY1F5ItNw/Screen-Shot.png" alt="Demo" /></a>
-  </video>
 
+[![ShowKeys Demo Video](http://i3.ytimg.com/vi/3fti_FCqjuE/hqdefault.jpg)](https://youtu.be/3fti_FCqjuE "ShowKeys Demo Video")
+
+[Watch on YouTube](https://youtu.be/3fti_FCqjuE "ShowKeys Demo Video")
 
 ## Getting It To Work
 
